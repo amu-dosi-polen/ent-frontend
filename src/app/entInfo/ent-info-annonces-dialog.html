@@ -1,0 +1,8 @@
+<div class="dialogHeader" >
+  <h1>Liste des infos</h1>
+  <i class="fa fa-times fa-2x" (click)="onAnnuler()"></i>
+</div>
+<mat-list *ngFor="let info of data.entInfos">
+  <div class="messageInfo" [innerHTML]="info.message"></div>
+  <mat-divider></mat-divider>
+</mat-list>

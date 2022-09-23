@@ -1,0 +1,73 @@
+<div class="app-dashboard menu">
+  <amu-navbar></amu-navbar>
+  <div class="main-container">
+  <main role="main" class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-12 heading-page">
+          <h1 class="titleHeader">Liste des menus</h1>
+        </div>
+        <div [ngClass]="'buttonAddClass'">
+          <button *ngIf="isAdmin" mat-raised-button (click)="onAdd()">+ Nouveau</button>
+        </div>
+      </div>
+      <div class="tableau">
+        <div class="filtre-header">
+          <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtre">
+          </mat-form-field>
+        </div>
+
+        <mat-table #table [dataSource]="dataSourceMenu">
+
+          <!-- Nom Column -->
+          <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef> Nom </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+          </ng-container>
+
+          <!-- Action Column -->
+          <ng-container matColumnDef="update">
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              <button mat-icon-button (click)="onUpdate(element)">
+                <mat-icon>settings</mat-icon>
+              </button>
+            </mat-cell>
+          </ng-container>
+
+          <!-- Ordre Column -->
+          <ng-container matColumnDef="order">
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-cell *matCellDef="let element; let row = index;">
+              <button *ngIf="isAdmin" (click)="up(row)" class="fa fa-chevron-up"></button>
+              <button *ngIf="isAdmin" (click)="down(row)"class="fa fa-chevron-down"></button>
+            </mat-cell>
+          </ng-container>
+          
+          <!-- Suppr -->
+          <ng-container matColumnDef="delete">
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              <button *ngIf="isAdmin" mat-icon-button (click)="onDelete(element.id,element.name)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+        <div [ngClass]="'footerClass'">
+          <!-- <div [ngClass]="'filterClass'">
+            <mat-paginator #paginatorApplication
+                           [pageSize]="5"
+                           [pageSizeOptions]="[5, 10, 20]"
+                           [showFirstLastButtons]="true">
+            </mat-paginator>
+          </div> -->
+      </div>
+      </div>
+    </div>
+  </main>
+</div>

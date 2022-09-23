@@ -1,0 +1,22 @@
+<div class="dialogHeader">
+  <h1>Ajout d'un nouvel utilisateur</h1>
+  <i class="fa fa-times fa-2x" (click)="onAnnuler()"></i>
+</div>
+<form #formulaire="ngForm" (ngSubmit)="onSubmit(formulaire.value)">
+  <div class="DialogBody">
+      <div class="form-group">
+        <mat-form-field class="nom_filtre">
+          <input matInput required [(ngModel)]="data.name" name="name" placeholder="Nom">
+        </mat-form-field>
+        <div>
+          <mat-form-field class="nom_filtre">
+            <input matInput required [(ngModel)]="data.value" name="value" placeholder="Valeur">
+          </mat-form-field>
+        </div>
+      </div>
+  </div>
+  <div class="button-row">
+    <button mat-raised-button type="button" (click)="onAnnuler()">Annuler</button>
+    <button mat-raised-button type="submit" [disabled]="!formulaire.form.valid" color="primary" cdkFocusInitial>Ajouter</button>
+  </div>
+</form>

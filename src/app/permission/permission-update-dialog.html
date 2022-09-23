@@ -1,0 +1,22 @@
+<div class="dialogHeader">
+  <h1>Modification d'un utilisateur</h1>
+  <i class="fa fa-times fa-2x" (click)="onAnnuler()"></i>
+</div>
+<form #formulaire="ngForm" (ngSubmit)="onSubmit(data)">
+  <div class="DialogBody">
+    <div class="form-group modification_gestionnaire">
+
+      <mat-form-field class="uid_gestionnaire">
+        <input matInput [(ngModel)]="data.name" name="name" placeholder="Nom">
+      </mat-form-field>
+
+      <mat-form-field class=" ">
+        <input matInput [(ngModel)]="data.value" name="value" placeholder="Valeur">
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="button-row">
+    <button mat-raised-button type="button" (click)="onAnnuler()">Annuler</button>
+    <button mat-raised-button type="submit" [disabled]="!formulaire.form.valid" color="primary" cdkFocusInitial>Modifier</button>
+  </div>
+</form>

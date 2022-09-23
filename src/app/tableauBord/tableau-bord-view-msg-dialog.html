@@ -1,0 +1,14 @@
+<div class="dialogHeader">
+  <h1>Contenu du message envoyé</h1>
+  <i class="fa fa-times fa-2x" (click)="annuler()"></i>
+</div>
+<div class="DialogBody">
+  <div class="sms__message__form form-group">
+    <div class="ckeditor">
+      <ckeditor  [readonly]="true" [(ngModel)]="data.message" name="messageMailHitorique" [config]="ckeConfig" debounce="500"> </ckeditor>
+    </div>
+    <div class="button-row">
+      <button mat-raised-button type="button" (click)="onClose()">Fermer</button>
+    </div>
+  </div>
+</div>

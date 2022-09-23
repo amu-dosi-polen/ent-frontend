@@ -1,0 +1,68 @@
+
+ <nav class="navbar">
+   <!-- <button type="button" class="btn btn-link sidebar-mobile-toggle collapsed" data-toggle="collapse" data-target="navbar-collapse" aria-expanded="false">
+     <span class="sr-only">Menu</span>
+     <span class="icon-bar"></span>
+     <span class="icon-bar"></span>
+     <span class="icon-bar"></span>
+   </button> -->
+   <!-- <a class="accueil" href="/" target="true">
+     <span class="accueil__heading-title">ACCUEIL</span>
+     <i class="fa fa-home"></i>
+   </a> -->
+   <button class="accueil" mat-button >
+     <a href="/">
+       <div class="title">ACCUEIL</div><i class="fas fa-home"></i>
+     </a>
+   </button>
+   <a class="navbar-brand" href="https://www.univ.fr/" target="true">
+     <img src="../assets/img/logo/logo_amu.png" width="auto" height="40" alt="logo Amu">
+     <!-- <span class="navbar-brand__heading-title">ENT</span> -->
+   </a>
+   <span class="header-com">
+     <div>
+       <button class="fa fa-globe-americas" (click)="openLink('https://www.univ.fr/intramu', 'amu')" title="IntrAMU"></button>
+       <button class="fab fa-facebook-f" (click)="openLink('https://www.facebook.com/','fb')" title="facebook"></button>
+     </div>
+     <div>
+       <button class="fab fa-twitter"(click)="openLink('https://twitter.com/', 'tw')" title="twitter"></button>
+       <button class="fab fa-linkedin-in"(click)="openLink('https://www.linkedin.com/edu/', 'lk')" title="linkedin"></button>
+     </div>
+   </span>
+
+   <span class="user-name" *ngIf="isAdmin == false && isChgtIdentity == false" class="name">{{firstname}} {{name}}</span>
+   <button  mat-button (click)="changeIdentity()" *ngIf="isAdmin == true || isChgtIdentity == true" class="button-name"><div>{{firstname}} {{name}}</div></button>
+   <button *ngIf="nbMessageEntInfos != 0" class="annonces" mat-button (click)="openDialogEntInfo()"
+   matBadge="{{nbMessageEntInfos}}" matBadgePosition="above after" matBadgeColor="primary">Annonces</button>
+   <ul *ngIf="isAdmin" class="navbar-nav navbar-right">
+     <li class="navbar-nav__item dropdown dropdown--parent">
+       <a [className]="'navbar-nav__item__link menu-admin'" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+         <i class="material-icons md-24">settings</i>
+         <span>Admin</span><span class="caret"></span>
+       </a>
+       <ul class="dropdown-menu">
+         <li><a *ngIf="isAdmin" [routerLink]="['/gestionnaire']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}">Gestionnaires</a></li>
+         <li><a *ngIf="isAdmin" mat-menu-item [routerLink]="['/menu']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}">Menu</a></li>
+         <li><a *ngIf="isAdmin" mat-menu-item [routerLink]="['/application']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}">Application</a></li>
+       </ul>
+     </li>
+   </ul>
+   <!-- admin read_only-->
+   <ul *ngIf="isChgtIdentity" class="navbar-nav navbar-right">
+    <li class="navbar-nav__item dropdown dropdown--parent">
+      <a [className]="'navbar-nav__item__link menu-admin'" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+        <i class="material-icons md-24">settings</i>
+        <span>Admin</span><span class="caret"></span>
+      </a>
+      <ul class="dropdown-menu">
+        <li><a *ngIf="isChgtIdentity" mat-menu-item [routerLink]="['/menu']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}">Menu</a></li>
+        <li><a *ngIf="isChgtIdentity" mat-menu-item [routerLink]="['/application']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}">Application</a></li>
+      </ul>
+    </li>
+  </ul>
+
+   <img class="logo-ent" src="../assets/img/logo/logo_ent.png" width="auto" height="40" alt="logo Amu">
+   <button class="sortie" mat-button (click)="logout()">
+       <div class="title">SORTIE</div><i class="fas fa-sign-out-alt"></i>
+   </button>
+ </nav>

@@ -1,0 +1,28 @@
+<div class="dialogHeader">
+  <h1>Détail des destinataires</h1>
+  <i class="fa fa-times fa-2x" (click)="annuler()"></i>
+</div>
+<div class="DialogBody">
+  <div class="destinataires__message__view form-group">
+      <div class="tableau__view" *ngIf="data.sites != ''">
+        <mat-list>
+          <h1 *ngIf="data.sites.length > 1">Sites :</h1>
+          <h1 *ngIf="data.sites.length == 1">Site :</h1>
+          <mat-list-item *ngFor='let site of data.sites'>
+            <span> {{site}}</span>
+          </mat-list-item>
+        </mat-list>
+      </div>
+      <div class="tableau__view" *ngIf="data.campus != ''">
+        <mat-list>
+          <h1>Campus :</h1>
+          <mat-list-item *ngFor='let campus of data.campus'>
+            <span> {{campus}}</span>
+          </mat-list-item>
+        </mat-list>
+      </div>
+      <div class="button-row">
+      <button mat-raised-button type="button" (click)="onClose()">Fermer</button>
+    </div>
+  </div>
+</div>

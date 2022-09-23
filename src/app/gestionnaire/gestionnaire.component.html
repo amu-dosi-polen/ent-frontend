@@ -1,0 +1,72 @@
+<!-- <div class="sms"> -->
+<div class="app-dashboard gestionnaire">
+  <amu-navbar></amu-navbar>
+  <div class="main-container">
+  <main role="main" class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-12 heading-page">
+          <h1 class="titleHeader">Administrateurs</h1>
+        </div>
+        <div [ngClass]="'buttonAddClass'">
+          <button mat-raised-button (click)="onAdd()">+ Nouveau</button>
+        </div>
+      </div>
+      <div class="tableau">
+        <div class="filtre-header">
+          <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtre">
+          </mat-form-field>
+        </div>
+
+        <mat-table #table [dataSource]="dataSourceGestionnaire">
+
+          <!-- Nom Column -->
+          <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef> Nom </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+          </ng-container>
+
+          <!-- prenom Column -->
+          <ng-container matColumnDef="firstname">
+            <mat-header-cell *matHeaderCellDef> Prénom </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.firstname}} </mat-cell>
+          </ng-container>
+
+          <!-- Role Column -->
+          <ng-container matColumnDef="role">
+            <mat-header-cell *matHeaderCellDef> Rôle </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.role}} </mat-cell>
+          </ng-container>
+
+          <!-- Action Column -->
+          <ng-container matColumnDef="action">
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              <mat-form-field>
+                <mat-select placeholder="Actions">
+                  <mat-option (click)="onUpdate(element)" value="option1">Modifier</mat-option>
+                  <mat-option (click)="onDelete(element.id,element.nom)" value="option2">Supprimer</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+        <div [ngClass]="'footerClass'">
+          <div [ngClass]="'filterClass'">
+            <!-- <mat-paginator #paginatorGestionnaire
+                           [pageSize]="5"
+                           [pageSizeOptions]="[5, 10, 20]"
+                           [showFirstLastButtons]="true">
+            </mat-paginator> -->
+          </div>
+      </div>
+      </div>
+    </div>
+  </main>
+  <!-- Main page content -->
+</div>
+</div>

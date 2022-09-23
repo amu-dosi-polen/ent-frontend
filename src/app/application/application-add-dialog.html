@@ -1,0 +1,158 @@
+<div class="dialogHeader" >
+  <h1>Ajout d'une nouvelle application</h1>
+  <i class="fa fa-times fa-2x" (click)="onAnnuler()"></i>
+</div>
+<form #formulaire="ngForm" (ngSubmit)="onSubmit(formulaire.value)">
+  <div class="DialogBody">
+    <mat-tab-group>
+      <mat-tab label="Configuration standard">
+        <div class="col0">
+          <mat-slide-toggle [(ngModel)]="data.actif" name="actif">Activer</mat-slide-toggle>
+        <!-- </div>
+
+        <div class="col0"> -->
+          <mat-form-field class="name">
+            <input matInput required [(ngModel)]="data.name" name="name" placeholder="Nom">
+          </mat-form-field>
+          <mat-form-field class="fname">
+            <input matInput required [(ngModel)]="data.fname" name="fname" placeholder="Fname">
+          </mat-form-field>
+          <mat-form-field class="url">
+            <input matInput required [(ngModel)]="data.url" name="url" placeholder="URL">
+          </mat-form-field>
+          <mat-form-field class="color">
+            <input matInput required [(ngModel)]="data.color" name="color" placeholder="Couleur">
+          </mat-form-field>
+          <mat-form-field class="icon">
+            <input matInput required [(ngModel)]="data.icon" name="icon" placeholder="Icone">
+          </mat-form-field>
+          <mat-form-field class="description">
+            <input matInput [(ngModel)]="data.description" name="description" placeholder="Description">
+          </mat-form-field>
+        </div>
+
+        <div class="col0">
+          <h1 class="title_visibilite"> Visibilité </h1>
+          <div class="checkbox_visibilite">
+            <mat-checkbox [(ngModel)]="data.tous" name="tous">Tous</mat-checkbox>
+            <mat-checkbox [(ngModel)]="data.tousEtu" name="tousEtu">Etudiants</mat-checkbox>
+            <mat-checkbox [(ngModel)]="data.tousAlum" name="tousAlum">Alum</mat-checkbox>
+            <mat-checkbox [(ngModel)]="data.tousEmployee" name="tousEmployee">Employés</mat-checkbox>
+            <mat-checkbox [(ngModel)]="data.tousFaculty" name="tousFaculty">Enseignants</mat-checkbox>
+            <mat-checkbox [(ngModel)]="data.tousResearch" name="tousResearch">Chercheurs</mat-checkbox>
+            <mat-checkbox [(ngModel)]="data.tousAffiliate" name="tousAffiliate">Affiliés</mat-checkbox>
+            <mat-checkbox [(ngModel)]="data.tousRetired" name="tousRetired">Retraités</mat-checkbox>
+          </div>
+        </div>
+        <div class="col0">
+          <h1> Visibilité par groupes </h1>
+          <div>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="nom du groupe" [(ngModel)]="groupSearch" name="search">
+            </mat-form-field>
+            <span [ngClass]="'buttonSearchClass'">
+              <button type="button" mat-raised-button (click)="searchGroup()">rechercher</button>
+            </span>
+          </div>
+
+          <div class="listes-group">
+            <mat-list appScrollable class="liste-select">
+              <mat-list-item appOffsetTop [class.selected]='selectedGroupLeft === index' (click)='selectedGroupLeft = index' *ngFor='let item of groupesForSelection; let index = index'>
+              {{item.cn}}
+              </mat-list-item>
+            </mat-list>
+            <span class="move-selected"><button type="button" mat-raised-button (click)="selectGroup()"> > </button></span>
+            <span class="move-selected"><button type="button" mat-raised-button (click)="removeGroup()"> < </button></span>
+            <mat-list appScrollable class="liste-select">
+              <mat-list-item appOffsetTop [class.selected]='selectedGroupRigth === index' (click)='selectedGroupRigth = index' *ngFor='let item of groupesSelected; let index = index'>
+              {{item.cn}}
+              </mat-list-item>
+            </mat-list>
+          </div>
+        </div>
+        <div class="col0">
+          <h1> Visibilité par utilisateurs </h1>
+          <div>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Identifiant CAS" [(ngModel)]="userSearch" name="search">
+            </mat-form-field>
+            <span [ngClass]="'buttonSearchClass'">
+              <button type="button" mat-raised-button (click)="searchUid()">rechercher</button>
+            </span>
+          </div>
+
+          <div class="listes-group">
+            <mat-list appScrollable class="liste-select">
+              <mat-list-item appOffsetTop [class.selected]='selectedUserLeft === index' (click)='selectedUserLeft = index' *ngFor='let item of usersForSelection; let index = index'>
+              {{ item.name }} {{ item.firstname }} ({{ item.uid }})
+              </mat-list-item>
+            </mat-list>
+            <span class="move-selected"><button type="button" mat-raised-button (click)="selectUser()"> > </button></span>
+            <span class="move-selected"><button type="button" mat-raised-button (click)="removeUser()"> < </button></span>
+            <mat-list appScrollable class="liste-select">
+              <mat-list-item appOffsetTop [class.selected]='selectedUserRigth === index' (click)='selectedUserRigth = index' *ngFor='let item of usersSelected; let index = index'>
+                {{ item.name }} {{ item.firstname }} ({{ item.uid }})
+              </mat-list-item>
+            </mat-list>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="Avancée">
+        <div class="col0">
+          <mat-form-field class="example-full-width">
+            <input matInput [max]="data.dateFin" [matDatepicker]="pickerDeb" [(ngModel)]="data.dateDebut" name="dateDebut" placeholder="Date de début">
+            <mat-datepicker-toggle matSuffix [for]="pickerDeb"></mat-datepicker-toggle>
+            <mat-datepicker #pickerDeb></mat-datepicker>
+          </mat-form-field>
+          <span class="time">Heure début</span>
+          <input atp-time-picker [(ngModel)]="data.timeDebut" class="time" name="timeDebut"/>
+        </div>
+        <div class="col0">
+          <mat-form-field class="example-full-width">
+            <input matInput [min]="data.dateDebut" [matDatepicker]="pickerFin" [(ngModel)]="data.dateFin" name="dateFin"  placeholder="Date de fin">
+            <mat-datepicker-toggle matSuffix [for]="pickerFin"></mat-datepicker-toggle>
+            <mat-datepicker #pickerFin></mat-datepicker>
+          </mat-form-field>
+          <span class="time-end">Heure fin</span>
+          <input atp-time-picker [(ngModel)]="data.timeFin" class="time" name="timeFin"/>
+        </div>
+
+        <div class="col0">
+          <mat-form-field class="requete">
+            <input matInput [(ngModel)]="data.requete" name="requete" placeholder="Requete URL">
+          </mat-form-field>
+          <mat-form-field class="key">
+            <input matInput [(ngModel)]="data.key" name="key" placeholder="Clé">
+          </mat-form-field>
+          <mat-form-field class="timer">
+            <mat-select  [(ngModel)]="data.timer" name="timer" placeholder="Fréquence de rafraichissement">
+              <mat-option *ngFor="let timer of timers" [value]="timer">
+                {{ timer }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="action">
+            <input matInput [(ngModel)]="data.action" name="action" placeholder="Action">
+          </mat-form-field>
+          <mat-form-field class="affichage">
+            <mat-select  [(ngModel)]="data.conditionAffichage" name="conditionAffichage" placeholder="condition d'affichage">
+              <mat-option *ngFor="let conditionAffichage of conditionsAffichage" [value]="conditionAffichage.id">
+                {{ conditionAffichage.value }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+    <!-- <div class="form-group">
+    </div> -->
+  </div>
+  <div class="button-row">
+    <button mat-raised-button type="button" (click)="onAnnuler()">Annuler</button>
+    <button mat-raised-button type="submit" [disabled]="!formulaire.form.valid ||
+     (data.tous == false && data.tousEmployee == false && data.tousEtu == false && data.tousAlum == false
+     && data.tousFaculty == false && data.tousResearch == false && data.tousAffiliate == false && data.tousRetired == false
+     && groupesSelected.length == 0 && usersSelected.length == 0)"
+     color="primary" cdkFocusInitial>Ajouter</button>
+  </div>
+</form>

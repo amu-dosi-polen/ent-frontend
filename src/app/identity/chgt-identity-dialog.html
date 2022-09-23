@@ -1,0 +1,15 @@
+<div class="dialogHeader" >
+  <h1>Changement d'identité</h1>
+  <i class="fa fa-times fa-2x" (click)="onAnnuler()"></i>
+</div>
+
+<div class="DialogBody">
+      <mat-form-field class="nom_filtre">
+        <input matInput [(ngModel)]="uid" name="uid" placeholder="Identifiant CAS">
+     </mat-form-field>
+
+</div>
+<div class="button-row">
+  <button mat-raised-button type="button" (click)="onAnnuler()">Annuler</button>
+  <button mat-raised-button type="button" (click)="changeIdentity()" color="primary" cdkFocusInitial>Changer d'identité</button>
+</div>

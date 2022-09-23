@@ -1,0 +1,198 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import "~ng-pick-datetime/assets/style/picker.min.css";
+body {
+  background-color: #eee!important;
+}
+html,
+body {
+  height: 100%;
+}
+application-add-dialog .mat-tab-body-wrapper {
+    height: 60rem;
+}
+application-update-dialog .mat-tab-body-wrapper {
+    height: 60rem;
+}
+.button-name span {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.ng-sidebar__content {
+  background: white;
+  padding: 0px 0px 0px 310px;
+}
+@media (max-width: 700px){
+  aside {
+    background-color: #ededed!important;
+    width: 20em;
+  }
+  .menu-button > span {
+    display: none;
+  }
+}
+@media (min-width: 701px){
+  aside {
+    background-color: #ededed!important;
+    width: 23em;
+  }
+}
+.crlf {
+  white-space: pre-line;
+}
+.mat-expansion-panel-body {
+  margin-top: -10px;
+}
+.mandatory-tiles>button>span{
+  display: flex;
+  flex-direction: column;
+  height: 9rem;
+}
+.mat-list-item {
+  width: 25em!important;
+  padding-left: 10px!important;
+}
+/*Patch pour overide le style par defaut*/
+.mat-list-item-content {
+  padding-left: 0px!important;
+}
+.mat-expansion-panel-body {
+  padding: 0px 0px 9px!important;
+}
+.mat-expansion-panel {
+  border-radius: 0px!important;
+}
+
+.mat-tab-label-content {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+}
+.mat-step-label {
+  font-size: 16px !important;
+}
+.mat-checkbox {
+  display: block;
+}
+.mat-checkbox-label {
+  font-size: 16px !important;
+  font-weight: initial;
+}
+.mat-radio-label-content {
+  font-size: 16px;
+  font-weight: initial;
+  padding-bottom: 3px;
+}
+.mat-dialog-container {
+    height: auto !important;
+    padding: inherit !important;
+    overflow: inherit !important;
+    border-radius: 4px!important;
+    background-color: #FFFFFF!important;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1)!important;
+}
+/* envoi-add-dialog h1 {
+  color: #FFFFFF!important;
+  font-weight: 500!important;
+  background-color: #1093D3;
+  padding: 0.7em;
+}
+gestionnaire-add-dialog h1, gestionnaire-delete-dialog h1, gestionnaire-update-dialog h1 {
+  color: #FFFFFF!important;
+  font-weight: 500!important;
+  background-color: #1093D3;
+  padding: 0.7em;
+}
+
+historique-view-msg-dialog h1 {
+  color: #FFFFFF!important;
+  font-weight: 500!important;
+  background-color: #1093D3;
+  padding: 0.7em;
+}
+message-add-dialog h1, message-delete-dialog h1, message-update-dialog h1 {
+  color: #FFFFFF!important;
+  font-weight: 500!important;
+  background-color: #1093D3;
+  padding: 0.7em;
+} */
+filtre-add-dialog h1, filtre-delete-dialog h1, filtre-update-dialog h1 {
+  color: #FFFFFF!important;
+  font-weight: 500!important;
+  background-color: #1093D3;
+  padding: 0.7em;
+}
+.dialogHeader h1 {
+  color: #FFFFFF!important;
+  font-weight: 500!important;
+  background-color: #1093D3;
+  padding: 0.7em;
+}
+.mat-snack-bar-container {
+  background-color: #59C176 !important;
+  color: #FFFFFF !important;
+  font-weight: 500 !important;
+}
+.mat-simple-snackbar {
+    font-size: 16px !important;
+}
+.mat-progress-bar-fill::after {
+    background-color: #673ab7!important;
+}
+.mat-input-infix {
+  font-size: 16px;
+}
+.mat-form-field-label {
+  color: rgba(0,0,0,0.87)!important;
+}
+.mat-tab-label-active {
+  color: #1093D3!important;
+}
+historique-view-msg-dialog .cke_top, historique-view-msg-dialog .cke_bottom {
+	display : none!important;
+}
+historique-view-msg-dialog .cke_enable_context_menu {
+	border-radius: 4px;
+	background-color: #EEEEEE;
+}
+historique-view-msg-dialog .cke_enable_context_menu p {
+	margin: 10px 0px 0px 0px;
+}
+historique-view-msg-dialog .ckeditor {
+  margin: 2em!important;
+}
+message-add-dialog .mat-tab-body, message-update-dialog .mat-tab-body {
+  height: 30em;
+}
+amu-envoi-form .mat-tab-body {
+  height: 32em;
+}
+
+tableau-bord-view-msg-dialog .cke_enable_context_menu {
+    border-radius: 4px;
+    background-color: #eee;
+}
+
+tableau-bord-view-msg-dialog .ckeditor {
+    margin: 2em!important;
+}
+tableau-bord-view-msg-dialog .cke_bottom, tableau-bord-view-msg-dialog .cke_top {
+    display: none!important;
+}
+tableau-bord-view-msg-dialog .cke_top {
+    display: none!important;
+}
+tableau-bord-view-msg-dialog .ckeditor {
+    margin: 2em!important;
+}
+tableau-bord-view-msg-dialog .cke_enable_context_menu p {
+    margin: 10px 0 0 0;
+}
+.cdk-overlay-pane {
+  display: block;
+}
+
+.sms__message {
+  box-shadow: none!important;
+}

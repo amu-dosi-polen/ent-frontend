@@ -1,0 +1,186 @@
+<div class="app-dashboard">
+  <ng-sidebar-container class="container">
+    <ng-sidebar
+      [(opened)]="opened"
+      [mode]="'push'"
+      [keyClose]=false
+      [position]="'left'"
+      [dock]=false
+      [dockedSize]="'50px'"
+      [autoCollapseHeight]=500
+      [autoCollapseWidth]=800
+      [closeOnClickOutside]=true
+      [closeOnClickBackdrop]=false
+      [showBackdrop]=false
+      [animate]=true
+      [trapFocus]=true
+      [autoFocus]=true
+      [ariaLabel]="'My sidebar'"
+      >
+      <mat-nav-list>
+        <h2 matSubheader>
+          <span class="header_person">{{person}}</span></h2>
+
+          <input class="searchFilter"  placeholder="Recherche" (input)="onSearchChange($event.target.value)">
+          <button  mat-button class="upDown" (click)="openCloseMenus()">
+            <i [ngClass]="upDown"></i>
+          </button>
+          <mat-accordion #myaccordion="matAccordion" multi="true">
+            <mat-expansion-panel *ngFor="let menu of menus" [expanded]="menu.open">
+              <mat-expansion-panel-header [collapsedHeight]="'40px'" [expandedHeight]="'40px'">
+                <mat-panel-title>
+                  {{ menu.name }}
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+
+              <mat-nav-list dense>
+                <div *ngFor="let application of menu.applications">
+                  <div class="menu-button" *ngIf="application.isFiltre !== null && application.isFiltre == false">
+                    <button *ngIf="application.alerte == false" mat-button  (click)="actionClick('onNavigate', application, application.fname)" title="{{application.description}}" >
+                      <i [ngClass]="application.icon" [ngStyle]="{'color': application.color}"></i>
+                      <span class="application">{{application.name}}</span>
+                    </button>
+                    <button *ngIf="application.alerte == true" mat-button matTooltip="{{getMessage(application)}}" (click)="actionClick('onNavigate', application, application.fname)">
+                      <i [ngClass]="{'color-level-1' : application.criticite == 1, 'color-level-2' : application.criticite == 2, 'color-level-3' : application.criticite == 3}"  class="fa fa-exclamation-triangle"></i>
+                      <span [ngClass]="{'color-level-1' : application.criticite == 1, 'color-level-2' : application.criticite == 2, 'color-level-3' : application.criticite == 3}" class="application">{{application.name}}</span>
+                    </button>
+                    <span *ngIf="application.isFavorite && !application.isMandatory">
+                      <mat-icon (click)="actionClick('deleteFavorite', application, application.fname)" class="star">star</mat-icon>
+                    </span>
+                    <span *ngIf="!application.isFavorite && !application.isMandatory">
+                      <mat-icon (click)="actionClick('addFavorite', application, application.fname)" class="star">star_outline</mat-icon>
+                    </span>
+                  </div>
+                  <div class="menu-button" *ngIf="application.isFiltre == null">
+                    <button  *ngIf="application.alerte == false" mat-button  (click)="actionClick('onNavigate', application, application.fname)" title="{{application.description}}">
+                      <i [ngClass]="application.icon" [ngStyle]="{'color': application.color}"></i>
+                      <span class="application">{{application.name}}</span>
+                    </button>
+                    <button *ngIf="application.alerte == true" mat-button matTooltip="{{getMessage(application)}}" (click)="actionClick('onNavigate', application, application.fname)">
+                      <i [ngClass]="{'color-level-1' : application.criticite == 1, 'color-level-2' : application.criticite == 2, 'color-level-3' : application.criticite == 3}"  class="fa fa-exclamation-triangle"></i>
+                      <span [ngClass]="{'color-level-1' : application.criticite == 1, 'color-level-2' : application.criticite == 2, 'color-level-3' : application.criticite == 3}" class="application">{{application.name}}</span>
+                    </button>
+                    <span *ngIf="application.isFavorite && !application.isMandatory">
+                      <mat-icon (click)="actionClick('deleteFavorite', application, application.fname)" class="star">star</mat-icon>
+                    </span>
+                    <span *ngIf="!application.isFavorite && !application.isMandatory">
+                      <mat-icon (click)="actionClick('addFavorite', application, application.fname)" class="star">star_outline</mat-icon>
+                    </span>
+                  </div>
+                </div>
+              </mat-nav-list>
+            </mat-expansion-panel>
+
+          </mat-accordion>
+      </mat-nav-list>
+
+    </ng-sidebar>
+
+    <div ng-sidebar-content>
+      <header class="demo-header">
+        <span (click)="toggleOpened()" class="menu__toggle">
+          <span class="menu-header" >MENU</span>
+          <i *ngIf="opened" class="fa fa-arrow-left fa-2x"></i>
+          <button *ngIf="!opened" class="demo-header__toggle"></button>
+        </span>
+        <amu-navbar></amu-navbar>
+      </header>
+
+      <section class="demo-contents">
+
+        <div class="main-container">
+          <main role="main" class="content">
+            <div class="container-fluid">
+              <div class="desk-title-top">MES OUTILS DE BASE</div>
+              <div>
+                <span class="mandatory-tiles" *ngFor="let application of applications">
+                  <button *ngIf="application.alerte == true" mat-button
+                  title="{{application.description}}"
+                  matTooltip="{{getMessage(application)}}" matTooltipClass="crlf"
+                  matBadge="{{application.compteur}}" matBadgePosition="after" matBadgeColor="warn" matBadgeHidden="{{application.compteur == 0}}"
+                  [ngClass]="{'desk-button-alert-1' : application.criticite == 1, 'desk-button-alert-2' : application.criticite == 2, 'desk-button-alert-3' : application.criticite == 3}"
+                  class="desk-button"  (click)="actionClick('onNavigate', application, application.fname)">
+                      <i [ngClass]="{'color-level-1' : application.criticite == 1, 'color-level-2' : application.criticite == 2, 'color-level-3' : application.criticite == 3}"  class="fa fa-exclamation-triangle desk-icon"></i>
+                      <span class="appliName">{{application.name}}</span>
+                  </button>
+
+                  <button *ngIf="application.alerte == false" mat-button  class="desk-button"
+                  title="{{application.description}}"
+                  matBadge="{{application.compteur}}" matBadgePosition="after" matBadgeColor="warn" matBadgeHidden="{{application.compteur == 0}}" matBadgeDescription="totot"
+                  (click)="actionClick('onNavigate', application, application.fname)">
+                      <i [ngClass]="application.icon" class="desk-icon" [ngStyle]="{'color': application.color}"></i>
+                      <span class="appliName">{{application.name}}</span>
+                  </button>
+                </span>
+              </div>
+              <div class="desk-title">MES FAVORIS</div>
+              <div>
+                <span class="mandatory-tiles" *ngFor="let applicationFavorite of applicationsFavorites">
+                  <button *ngIf="applicationFavorite.alerte == true" mat-button
+                   title="{{applicationFavorite.description}}"
+                   (mouseover)="affichageDelete(applicationFavorite.fname)" (mouseout)="suppressionDelete(applicationFavorite.fname)"
+                  matBadge="{{applicationFavorite.compteur}}" matBadgePosition="after" matBadgeColor="warn" matBadgeHidden="{{applicationFavorite.compteur == 0}}"
+                  matTooltip="{{getMessage(applicationFavorite)}}" [ngClass]="{'desk-button-alert-1' : applicationFavorite.criticite == 1, 'desk-button-alert-2' : applicationFavorite.criticite == 2, 'desk-button-alert-3' : applicationFavorite.criticite == 3}" 
+                  class="desk-button" (click)="actionClick('onNavigate', applicationFavorite, applicationFavorite.fname)">
+                      <i [ngClass]="{'color-level-1' : applicationFavorite.criticite == 1, 'color-level-2' : applicationFavorite.criticite == 2, 'color-level-3' : applicationFavorite.criticite == 3}"  class="fa fa-exclamation-triangle desk-icon">
+                        <span [ngClass]="isAffichage(applicationFavorite.fname)" class="fa fa-trash button-delete" (click)="deleteApplicationFavoris(applicationFavorite)"></span>
+                      </i>
+                      <span class="appliName">{{applicationFavorite.name}}</span>
+                  </button>
+                  <button *ngIf="applicationFavorite.alerte == false" mat-button  class="desk-button"
+                  title="{{applicationFavorite.description}}"
+                  (mouseover)="affichageDelete(applicationFavorite.fname)" (mouseout)="suppressionDelete(applicationFavorite.fname)"
+                  matBadge="{{applicationFavorite.compteur}}" matBadgePosition="after" matBadgeColor="warn" matBadgeHidden="{{applicationFavorite.compteur == 0}}"
+                  (click)="actionClick('onNavigate', applicationFavorite, applicationFavorite.fname)">
+                      <i [ngClass]="applicationFavorite.icon" class="desk-icon" [ngStyle]="{'color': applicationFavorite.color}">
+                        <span [ngClass]="isAffichage(applicationFavorite.fname)" class="fa fa-trash button-delete" (click)="deleteApplicationFavoris(applicationFavorite)"></span>
+                      </i>
+                      <span class="appliName">{{applicationFavorite.name}}</span>
+                  </button>
+
+                  <!-- <button  (mouseover)="affichageDelete()" (mouseout)="suppressionDelete()" class="button-delete" [ngClass]="{'display-none': affichage == 'false'}" mat-icon-button (click)="deleteFavoris()" >
+                    <mat-icon>delete</mat-icon>
+                  </button> -->
+
+                </span>
+              </div>
+              <div class="desk-title">MES PLUS FRÉQUENTÉS</div>
+              <div>
+                <span class="mandatory-tiles" *ngFor="let applicationMoreClicked of applicationsMoreClicked">
+                  <button *ngIf="applicationMoreClicked.alerte == true" mat-button
+                  title="{{applicationMoreClicked.description}}"
+                  (mouseover)="affichageDelete(applicationMoreClicked.fname)" (mouseout)="suppressionDelete(applicationMoreClicked.fname)"
+                  matBadge="{{applicationMoreClicked.compteur}}" matBadgePosition="after" matBadgeColor="warn" matBadgeHidden="{{applicationMoreClicked.compteur == 0}}"
+                  matTooltip="{{getMessage(applicationMoreClicked)}}" [ngClass]="{'desk-button-alert-1' : applicationMoreClicked.criticite == 1, 'desk-button-alert-2' : applicationMoreClicked.criticite == 2, 'desk-button-alert-3' : applicationMoreClicked.criticite == 3}" class="desk-button"  (click)="actionClick('onNavigate', applicationMoreClicked, applicationMoreClicked.fname)">
+                      <i [ngClass]="{'color-level-1' : applicationMoreClicked.criticite == 1, 'color-level-2' : applicationMoreClicked.criticite == 2, 'color-level-3' : applicationMoreClicked.criticite == 3}"  class="fa fa-exclamation-triangle desk-icon">
+                        <span [ngClass]="isAffichage(applicationMoreClicked.fname)" class="fa fa-trash button-delete" (click)="deleteApplicationMoreClicked(applicationMoreClicked)"></span>
+                      </i>
+                      <span class="appliName">{{applicationMoreClicked.name}}</span>
+                  </button>
+                  <button *ngIf="applicationMoreClicked.alerte == false" mat-button  class="desk-button"
+                  title="{{applicationMoreClicked.description}}"
+                  (mouseover)="affichageDelete(applicationMoreClicked.fname)" (mouseout)="suppressionDelete(applicationMoreClicked.fname)"
+                  matBadge="{{applicationMoreClicked.compteur}}" matBadgePosition="after" matBadgeColor="warn" matBadgeHidden="{{applicationMoreClicked.compteur == 0}}"
+                  (click)="actionClick('onNavigate', applicationMoreClicked, applicationMoreClicked.fname)">
+                      <i [ngClass]="applicationMoreClicked.icon" class="desk-icon" [ngStyle]="{'color': applicationMoreClicked.color}">
+                        <span [ngClass]="isAffichage(applicationMoreClicked.fname)" class="fa fa-trash button-delete" (click)="deleteApplicationMoreClicked(applicationMoreClicked)"></span>
+                      </i>
+                      <span class="appliName">{{applicationMoreClicked.name}}</span>
+                  </button>
+                </span>
+              </div>
+            </div>
+          </main>
+        </div>
+      </section>
+    </div>
+  </ng-sidebar-container>
+  <footer class="region-footer-first">
+    <span class="mentionsLegalsFooter">
+      <a target="_blank" href="http://www.univ.fr/fr/mentions-legales">MENTIONS LÉGALES</a>
+    </span>
+    <span class="EntFooterLaptop">ENVIRONNEMENT NUMÉRIQUE DE TRAVAIL</span>
+    <span class="EntFooterMobile">ENT</span>
+
+  </footer>
+</div>

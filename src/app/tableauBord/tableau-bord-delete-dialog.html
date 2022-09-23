@@ -1,0 +1,13 @@
+<div class="dialogHeader">
+  <h1 class ="labelPopup">Suppression d'un message</h1>
+  <i class="fa fa-times fa-2x" (click)="onAnnuler()"></i>
+</div>
+<div class="DialogBody">
+  <div class="form-group messagePopup">
+      <label class="padding2em" for="name">Vous êtes sur le point de supprimer le message</label>
+  </div>
+</div>
+<div class="button-row">
+  <button mat-raised-button (click)="onAnnuler()">Annuler</button>
+  <button mat-raised-button (click)="onDelete(data.id)" color="primary" cdkFocusInitial>Supprimer</button>
+</div>

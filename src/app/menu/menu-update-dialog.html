@@ -1,0 +1,39 @@
+<div class="dialogHeader">
+  <h1>Modification d'un menu</h1>
+  <i class="fa fa-times fa-2x" (click)="onAnnuler()"></i>
+</div>
+<form #formulaire="ngForm" (ngSubmit)="onSubmit(data)">
+  <fieldset [disabled]="fieldsetDisabled">
+    <div class="DialogBody">
+      <div class="form-group modification_gestionnaire">
+        <mat-form-field class="fname">
+          <input matInput required [(ngModel)]="data.name" name="name" placeholder="Nom">
+        </mat-form-field>
+        <div>
+
+        <h1>Liste des applications</h1>
+        <div class="liste-appli">
+          <mat-list appScrollable class="liste-select">
+            <mat-list-item appOffsetTop [class.selected]='selectedAppLeft === leftIndex' (click)='selectedAppLeft = leftIndex' *ngFor='let application of appsForSelection; let leftIndex = index'>
+              <span class={{application.icon}} [ngStyle]="{'color': application.color}"></span>
+              {{application.name}}
+            </mat-list-item>
+          </mat-list>
+          <span class="move-selected"><button type="button" mat-raised-button (click)="addApp()"> > </button></span>
+          <span class="move-selected"><button type="button" mat-raised-button (click)="removeApp()"> < </button></span>
+          <mat-list appScrollable class="liste-select">
+            <mat-list-item appOffsetTop [class.selected]='selectedAppRight === rightIndex' (click)='selectedAppRight = rightIndex' *ngFor='let application of applicationsSelected; let rightIndex = index'>
+              <span class={{application.icon}} [ngStyle]="{'color': application.color}"></span>
+              {{application.name}}
+            </mat-list-item>
+          </mat-list>
+        </div>
+        </div>
+      </div>
+    </div>
+    <div class="button-row">
+      <button mat-raised-button type="button" (click)="onAnnuler()">Annuler</button>
+      <button mat-raised-button type="submit" [disabled]="!formulaire.form.valid" color="primary" cdkFocusInitial>Modifier</button>
+    </div>
+  </fieldset>
+</form>

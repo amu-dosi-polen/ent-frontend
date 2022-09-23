@@ -1,0 +1,113 @@
+<!-- <div class="sms"> -->
+<div class="app-dashboard application">
+  <amu-navbar></amu-navbar>
+  <div class="main-container">
+  <main role="main" class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-12 heading-page">
+          <h1 class="titleHeader">Liste des applications</h1>
+        </div>
+        <div [ngClass]="'buttonAddClass'">
+          <button *ngIf="isAdmin" mat-raised-button (click)="onAdd()">+ Nouveau</button>
+        </div>
+      </div>
+      <div class="tableau">
+        <div class="filtre-header">
+          <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtre">
+          </mat-form-field>
+        </div>
+
+        <mat-table #table [dataSource]="dataSourceApplication">
+
+          <!-- actif -->
+          <ng-container matColumnDef="actif">
+            <mat-header-cell *matHeaderCellDef>Active</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              <!--<mat-icon *ngIf="element.actif">visibility</mat-icon>-->
+              <mat-icon *ngIf="!element.actif">visibility_off</mat-icon>
+              <mat-icon *ngIf="element.dateDebut"
+                        matTooltip="Visible à partir du {{element.dateDebut | date:'dd/MM/yyyy HH:mm'}}">
+                event
+              </mat-icon>
+              <mat-icon *ngIf="element.dateFin"
+                        matTooltip="Ne sera plus visible à partir du {{element.dateFin | date:'dd/MM/yyyy HH:mm'}}">
+                timer
+              </mat-icon>
+            </mat-cell>
+          </ng-container>
+
+          <!-- Nom Column -->
+          <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef>Nom</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              <button mat-icon-button (click)="onUpdate(element)">
+                <span class={{element.icon}} [ngStyle]="{'color': element.color}"></span>
+                {{element.name}}
+              </button>              
+            </mat-cell>
+          </ng-container>
+
+          <!-- Fname Column -->
+          <ng-container matColumnDef="fname">
+            <mat-header-cell *matHeaderCellDef>Fname</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.fname}} </mat-cell>
+          </ng-container>
+
+          <!-- prenom Column -->
+          <ng-container matColumnDef="url">
+            <mat-header-cell *matHeaderCellDef>Url</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+               <a href="{{element.url}}">{{element.url}}</a>
+            </mat-cell>
+          </ng-container>
+
+          <!-- Role Column -->
+          <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
+          </ng-container>
+
+          <!-- Suppr -->
+          <ng-container matColumnDef="suppr">
+            <mat-header-cell *matHeaderCellDef>Suppr</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              <button *ngIf="isAdmin" mat-icon-button (click)="onDelete(element.id, element.name)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </mat-cell>
+          </ng-container>
+
+          <!-- Action Column 
+          <ng-container matColumnDef="action">
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              <mat-form-field>
+                <mat-select placeholder="Actions">
+                  <mat-option (click)="onUpdate(element)" value="option1">Modifier</mat-option>
+                  <mat-option (click)="onDelete(element.id,element.nom)" value="option2">Supprimer</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </mat-cell>
+          </ng-container>
+        -->
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+        <div [ngClass]="'footerClass'">
+          <div [ngClass]="'filterClass'">
+            <!-- <mat-paginator #paginatorApplication
+                           [pageSize]="5"
+                           [pageSizeOptions]="[5, 10, 20]"
+                           [showFirstLastButtons]="true">
+            </mat-paginator> -->
+          </div>
+      </div>
+      </div>
+    </div>
+  </main>
+  <!-- Main page content -->
+</div>
+</div>
