@@ -14,7 +14,7 @@
 }
 .dialogHeader {
   display: flex;
-  background-color: #1093D3;
+  background-color: var(--color-senary);
 }
 
 .dialogHeader h1 {
@@ -35,16 +35,16 @@ amu-navbar {
 }
 
 ::selection {
-  background-color: #0273d4;
+  background-color: var(--color-secondary);
   color: #fff;
 }
 
 a {
-  color: #0273d4;
+  color: var(--color-secondary);
   text-decoration: none;
 }
   a:hover {
-    border-bottom: 1px dotted #0273d4;
+    border-bottom: 1px dotted var(--color-secondary);
   }
 
 p {
@@ -57,7 +57,7 @@ h2 {
 }
 
 h1 {
-  /* border-bottom: 1px dotted #0273d4; */
+  /* border-bottom: 1px dotted var(--color-secondary); */
   display: block;
   margin: 2rem 0 1rem;
   padding-bottom: 0.5rem;
@@ -78,7 +78,7 @@ h2 {
 
 .demo-header {
   align-items: center;
-  background: #0f7ab0;
+  background: var(--color-tertiary);
   color: #fff;
   display: flex;
   padding: 1em;
@@ -130,7 +130,7 @@ h2 {
 
 
 .mat-step-header {
-  background-color: #1093D3;
+  background-color: var(--color-senary);
 }
 
 
@@ -240,7 +240,7 @@ p {
   margin-top: 0;
 }
 a {
-  color: #1093d3;
+  color: var(--color-primary);
   font-size: 2.25rem;
   font-weight: 900;
 }
@@ -379,7 +379,7 @@ th.sorting:last-child .DataTables_sort_wrapper i::before {
 }
 .dataTables_wrapper .dataTables_paginate .ui-state-disabled {
   color: #fff;
-  background: #1093d3;
+  background: var(--color-primary);
   border-radius: 4px;
   opacity: 1;
 }
@@ -507,7 +507,7 @@ th.sorting:last-child .DataTables_sort_wrapper i::before {
   height: 70px;
   width: 100%;
   position: relative;
-  background-color: #1093d3;
+  background-color: var(--color-primary);
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.10);
   flex-direction: row;
   margin: 0;
@@ -684,7 +684,7 @@ th.sorting:last-child .DataTables_sort_wrapper i::before {
   padding: 0.75rem 0.5rem;
 }
 .dropdown .dropdown-menu .btn.btn-default {
-  background-color: #1093d3;
+  background-color: var(--color-primary);
   color: #fff;
 }
 .dropdown .dropdown-menu li > a {
@@ -771,7 +771,7 @@ a:hover, a:focus, .btn:hover {
   color: #fff;
 }
 .btn-link {
-  color: #1093d3;
+  color: var(--color-primary);
   font-weight: 500;
 }
 .btn-action {
@@ -804,30 +804,30 @@ a:hover, a:focus, .btn:hover {
 .btn-hollow {
   background-color: #fff;
   border-color: 1px solid #fff;
-  color: #1093d3;
+  color: var(--color-primary);
   border-radius: 4px;
-  border: 1px solid #1093d3;
+  border: 1px solid var(--color-primary);
 }
 .btn-hollow:hover, .btn-hollow:focus {
   background-color: #f2f2f2;
-  color: #1093d3;
+  color: var(--color-primary);
   border-color: 1px solid #fff;
 }
 .btn-hollow:hover {
-  background-color: #1093d3;
+  background-color: var(--color-primary);
   color: #fff;
-  border: 1px solid #1093d3;
+  border: 1px solid var(--color-primary);
 }
 .btn-primary {
-  background-color: #1093d3;
-  border-color: 1px solid #1093d3;
+  background-color: var(--color-primary);
+  border-color: 1px solid var(--color-primary);
   color: #fff;
   border-radius: 4px;
 }
 .btn-primary:hover, .btn-primary:focus {
   background-color: #0e82bb;
   color: #fff;
-  border-color: 1px solid #1093d3;
+  border-color: 1px solid var(--color-primary);
 }
 .btn-secondary {
   background-color: #ccc;
@@ -916,21 +916,21 @@ a:hover, a:focus, .btn:hover {
 .toggle-button .btn {
   background-color: #fff;
   border-color: 1px solid #fff;
-  color: #1093d3;
+  color: var(--color-primary);
   border-radius: 4px;
-  color: #1093d3;
+  color: var(--color-primary);
   margin-bottom: 0;
   flex: 1 0 0;
-  border: 1px solid #1093d3;
+  border: 1px solid var(--color-primary);
 }
 .toggle-button .btn:hover, .toggle-button .btn:focus {
   background-color: #f2f2f2;
-  color: #1093d3;
+  color: var(--color-primary);
   border-color: 1px solid #fff;
 }
 .toggle-button .btn.active {
-  background-color: #1093d3;
-  border-color: 1px solid #1093d3;
+  background-color: var(--color-primary);
+  border-color: 1px solid var(--color-primary);
   color: #fff;
   border-radius: 4px;
   color: #fff;
@@ -938,7 +938,7 @@ a:hover, a:focus, .btn:hover {
 .toggle-button .btn.active:hover, .toggle-button .btn.active:focus {
   background-color: #0e82bb;
   color: #fff;
-  border-color: 1px solid #1093d3;
+  border-color: 1px solid var(--color-primary);
 }
 .btn-info.active.focus, .btn-info.active:focus, .btn-info.active:hover, .btn-info:active.focus, .btn-info:active:focus, .btn-info:active:hover, .open > .dropdown-toggle.btn-info.focus, .open > .dropdown-toggle.btn-info:focus, .open > .dropdown-toggle.btn-info:hover {
   background-color: #f8f8f8;
@@ -1008,7 +1008,7 @@ a:hover, a:focus, .btn:hover {
   border: none !important;
   cursor: pointer;
   background-color: #fafafa;
-  color: #1093d3;
+  color: var(--color-primary);
 }
 .nav-tabs > li > a {
   padding: 0;
@@ -1020,8 +1020,8 @@ a:hover, a:focus, .btn:hover {
   font-weight: 600;
 }
 .nav-tabs__title.active {
-  border-bottom: 3px solid #1093d3;
-  color: #1093d3;
+  border-bottom: 3px solid var(--color-primary);
+  color: var(--color-primary);
 }
 .nav-tabs .material-icons {
   font-size: 3rem;
@@ -1061,11 +1061,11 @@ a:hover, a:focus, .btn:hover {
   display: inline-block;
 }
 .tab-pane .nav-tabs li.active > a, .tab-pane .nav-tabs li.active h2, .tab-pane .nav-tabs li.active i {
-  color: #1093d3;
+  color: var(--color-primary);
 }
 .modal__heading {
   padding: 0.75rem 1rem 0.75rem 1rem;
-  background-color: #1093d3;
+  background-color: var(--color-primary);
   color: #fff;
   border-radius: 4px 4px 0px 0px;
 }
@@ -1110,7 +1110,7 @@ a:hover, a:focus, .btn:hover {
   margin-bottom: 0;
 }
 .modal__content__callout__e-mail {
-  color: #1093d3;
+  color: var(--color-primary);
 }
 .modal__content__callout b {
   color: #cc4b37;
@@ -1326,7 +1326,7 @@ form p label .select-wrapper::after {
 }
 .input-checkbox input[type="checkbox"]:checked + .checkbox:before {
   content: "\e834";
-  color: #1093d3;
+  color: var(--color-primary);
 }
 .input-checkbox input[type="checkbox"]:active:not(:disabled) + .checkbox:before {
   transform: scale3d(0.88, 0.88, 1);
@@ -1509,7 +1509,7 @@ table tr .btn-action {
   font-size: 1rem;
 }
 .table .nav-tabs > li.active > a, .table .nav-tabs > li.active > a:hover, .table .nav-tabs > li.active > a:focus {
-  color: #1093d3;
+  color: var(--color-primary);
 }
 .table .tabs .tabs-title a {
   padding: 1.5rem 1.5rem;
@@ -1630,7 +1630,7 @@ table tr .btn-action {
   margin: 0;
 }
 .panel-group .panel.accordion__content .panel-heading a:not(.collapsed) .panel-title, .panel-group .panel.accordion__content .panel-heading a:not(.collapsed) i {
-  color: #1093d3;
+  color: var(--color-primary);
 }
 .panel-group .panel.accordion__content .panel-heading i {
   float: right;
@@ -1750,7 +1750,7 @@ table tr .btn-action {
   margin-left: 0.5rem;
 }
 .input-group-btn .btn {
-  background-color: #1093d3;
+  background-color: var(--color-primary);
   color: #fff;
   font-weight: 300;
 }
@@ -1803,7 +1803,7 @@ table tr .btn-action {
   font-size: 0.875rem;
 }
 .panel .panel-heading__list a:hover {
-  color: #1093d3;
+  color: var(--color-primary);
   text-decoration: underline;
 }
 .panel .panel-body {
@@ -1873,7 +1873,7 @@ form .panel-group .panel-heading .panel-title {
   font-weight: 700;
 }
 .card-info--primary {
-  border-top: 4px solid #1093d3;
+  border-top: 4px solid var(--color-primary);
 }
 .card-info--secondary {
   border-top: 4px solid #334659;
@@ -1893,7 +1893,7 @@ form .panel-group .panel-heading .panel-title {
   border-color: rgba(255, 255, 255, 0) #334659 rgba(255, 255, 255, 0) rgba(255, 255, 255, 0);
 }
 .card-info__label__heading-title {
-  color: #1093d3;
+  color: var(--color-primary);
   display: inline-block;
   font-size: 1.125rem;
   font-weight: 500;
