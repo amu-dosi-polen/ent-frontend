@@ -1,6 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 @import "~ng-pick-datetime/assets/style/picker.min.css";
+:root {
+    --color-primary: #1093d3;
+    --color-secondary: #0273d4;
+    --color-tertiary: #0f7ab0;
+    --color-quaternary: #1988c0;
+    --color-quinary: #1094d5;
+    --color-senary: #1093D3;
+}
 body {
   background-color: #eee!important;
 }
@@ -95,38 +103,38 @@ application-update-dialog .mat-tab-body-wrapper {
 /* envoi-add-dialog h1 {
   color: #FFFFFF!important;
   font-weight: 500!important;
-  background-color: #1093D3;
+  background-color: var(--color-primary);
   padding: 0.7em;
 }
 gestionnaire-add-dialog h1, gestionnaire-delete-dialog h1, gestionnaire-update-dialog h1 {
   color: #FFFFFF!important;
   font-weight: 500!important;
-  background-color: #1093D3;
+  background-color: var(--color-primary);
   padding: 0.7em;
 }
 
 historique-view-msg-dialog h1 {
   color: #FFFFFF!important;
   font-weight: 500!important;
-  background-color: #1093D3;
+  background-color: var(--color-primary);
   padding: 0.7em;
 }
 message-add-dialog h1, message-delete-dialog h1, message-update-dialog h1 {
   color: #FFFFFF!important;
   font-weight: 500!important;
-  background-color: #1093D3;
+  background-color: var(--color-primary);
   padding: 0.7em;
 } */
 filtre-add-dialog h1, filtre-delete-dialog h1, filtre-update-dialog h1 {
   color: #FFFFFF!important;
   font-weight: 500!important;
-  background-color: #1093D3;
+  background-color: var(--color-primary);
   padding: 0.7em;
 }
 .dialogHeader h1 {
   color: #FFFFFF!important;
   font-weight: 500!important;
-  background-color: #1093D3;
+  background-color: var(--color-primary);
   padding: 0.7em;
 }
 .mat-snack-bar-container {
@@ -147,7 +155,7 @@ filtre-add-dialog h1, filtre-delete-dialog h1, filtre-update-dialog h1 {
   color: rgba(0,0,0,0.87)!important;
 }
 .mat-tab-label-active {
-  color: #1093D3!important;
+  color: var(--color-primary)!important;
 }
 historique-view-msg-dialog .cke_top, historique-view-msg-dialog .cke_bottom {
 	display : none!important;
